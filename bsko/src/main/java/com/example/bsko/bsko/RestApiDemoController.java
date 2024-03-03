@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-
-
-
 @RestController
 @RequestMapping("/")
 public class RestApiDemoController {
@@ -29,18 +26,10 @@ public class RestApiDemoController {
         List<Coffee> getCoffees(){
             return coffees;
         }
-    
-    @GetMapping("/coffees/{id}")
-    Optional<Coffee> getCoffeeById(@PathVariable String id){
-        System.out.println(id);
-        for(Coffee c: coffees){
-            System.out.println(c.getId());
-            if(c.getId().equals(id)){
-                return Optional.of(c);
-            }
-        }
-        
-        return Optional.empty();
+
+    @GetMapping("/{id}")
+    String getCoffeeById(@PathVariable("id") String id) {
+        return id;
     }
     
     
